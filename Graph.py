@@ -9,9 +9,14 @@ class Graph():
     def __getitem__(self, u):
         return self.adjList[u]
 
-    explorationQueue = Queue()
+    def __str__(self):
+        graph = []
+        for u in self.keys:
+            graph.append(str(u) + ":" + str(self.adjList[u]))
+        return str(graph)
 
     def bfs(self, adjList, sourceVertex):
+
         (visited, parent, distance) = (dict(), dict(), dict())
         for u in adjList.keys:
             visited[u] = False
@@ -34,10 +39,30 @@ class Graph():
                     explorationQueue.add(v)
         
         return(parent, distance)
+    
+    def __dfs(self, adjList, color, parent, time_in, time_out, dfs_timer, u):
 
-    def __str__(self):
-        graph = []
-        for u in self.keys:
-            graph.append(str(u) + ":" + str(self.adjList[u]))
-        return str(graph)
+        time_in[u] = dfs_timer = dfs_timer + 1
+        color[u] = 1
+
+        for v in self.adjList[u]:
+            if(color[v] == 0):
+                parent[v] = u
+                (color, parent, time_in, time_out, dfs_timer) = self.__dfs(adjList, color, parent, time_in, time_out, dfs_timer, v)
+        
+        color[u] = 2
+        time_out[u] = dfs_timer = dfs_timer + 1
+
+        return (color, parent, time_in, time_out, dfs_timer)
+
+
+    def dfs(self, adjList, sourceVertex):
+
+        dfs_timer = 0
+        (color, parent, time_in, time_out) = (dict(), dict(), dict(), dict())
+        for u in adjList.keys:
+            (color[u], parent[u], time_in[u], time_out[u]) = (0, -1, 0, 0)
+        
+        return self.__dfs(adjList, color, parent, time_in, time_out, dfs_timer, sourceVertex)
+
                
