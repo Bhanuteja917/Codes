@@ -1,3 +1,10 @@
+# Given an undirected graph G, write a Python function to compute the number of connected components. 
+# A set of nodes form a connected component in an undirected graph if there exists a path between every pair of nodes in this set.
+# Write a Python function find components_undirectedGraph (vertices, edges), that accepts a list of vertices and a list of tuples 
+# that represent edges, and returns the number of connected components in the graph formed by vertices and edges. Each tuple (i,j) 
+# in edges represents an edge between vertices i and j.For a completely connected graph there is only one connected component, 
+# hence the function should return 1
+
 vertices = [int(x) for x in input().split(" ")]
 numOfEdges = int(input())
 edges = []

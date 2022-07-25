@@ -1,3 +1,8 @@
+# Complete the Python function findAllPaths to find all possible paths from the source vertex to destination vertex in a directed graph.
+# Function findAllPaths(vertices, gList, source, destination) takes vertices as a list of vertices, gList a dictionary that is an adjacency 
+# List representation of graph edges, source vertex, destination vertex, and returns a list of all paths from source to destination. The return 
+# value will be a List of Lists, where every path is a sequence of vertices as a List. Return an empty list if no path exists from 'source' to 'destination'.
+
 vertices = input().split(" ")
 graph = {}
 for v in vertices:
